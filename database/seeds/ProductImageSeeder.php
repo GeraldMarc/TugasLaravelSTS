@@ -13,14 +13,16 @@ class ProductImageSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        for($i = 0; $i < 200; $i++){
-            DB::table('product_images')->insert([
-                'product_images_url' => $faker->imageUrl,
-                'main_image_url' => $faker->imageUrl,
-                'product_id' => ($i+1)%2,
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' =>  \Carbon\Carbon::now()
-            ]);
+        for($i = 0; $i < 100; $i++){
+            for($j = 0; $j < 2; $j++){
+                DB::table('product_images')->insert([
+                    'product_image_url' => $faker->imageUrl,
+                    'main_image' => 0,
+                    'product_id' => $i+1,
+                    'created_at' => \Carbon\Carbon::now(),
+                    'updated_at' =>  \Carbon\Carbon::now()
+                ]);
+            }
         }
     }
 }

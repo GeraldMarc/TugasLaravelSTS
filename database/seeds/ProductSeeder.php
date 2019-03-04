@@ -18,6 +18,7 @@ class ProductSeeder extends Seeder
                 'sku' => str_random(10),
                 'name' => $faker->word,
                 'description' => $faker->sentence,
+                'unit_price' => rand()%100000+1,
                 'product_category_id' => rand()%10+1,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' =>  \Carbon\Carbon::now()
