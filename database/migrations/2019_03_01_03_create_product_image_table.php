@@ -16,7 +16,7 @@ class CreateProductImageTable extends Migration
         Schema::create('product_images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('product_image_url', 255);
-            $table->string('main_image_url', 255);
+            $table->boolean('main_image');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')->on('products')
@@ -34,6 +34,6 @@ class CreateProductImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_image');
+        Schema::dropIfExists('product_images');
     }
 }
