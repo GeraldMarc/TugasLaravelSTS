@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => 'api'], function() {
+    Route::prefix('Product')->group(function () {
+        Route::get('GetAll/','ProductController@GetAll');
+        Route::get('GetByID/{id}/', 'ProductController@GetDetailByID');
+        Route::post('Store/', 'ProductController@Store');
+        Route::put('Update/{id}/', 'ProductController@Update');
+        Route::delete('Delete/{id}/', 'ProductController@Delete');
+    });
+
+    Route::prefix('ProductImage')->group(function () {
+        Route::get('GetWithParam/{product_id}/', 'ProductImageController@GetWithParam');
+        Route::post('Store/', 'ProductImageController@Store');
+        Route::put('SetMainImage/{id}/', 'ProductImageController@SetMainImage');
+        Route::delete('Delete/{id}/', 'ProductImageController@Delete');
+    });
+});
