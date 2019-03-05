@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'api'], function() {
     Route::prefix('Product')->group(function () {
         Route::get('GetAll/','ProductController@GetAll');
-        Route::get('GetByID/{id}/', 'ProductController@GetDetailByID');
+        Route::get('GetByID/{id}/', 'ProductController@GetByID');
         Route::post('Store/', 'ProductController@Store');
         Route::put('Update/{id}/', 'ProductController@Update');
         Route::delete('Delete/{id}/', 'ProductController@Delete');
