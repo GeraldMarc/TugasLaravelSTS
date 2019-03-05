@@ -12,7 +12,7 @@ class ProductImageController extends Controller
         
         return response()->json([
             'message' => 'success',
-            'data' => images
+            'data' => $images
         ], 200);
     }
 
